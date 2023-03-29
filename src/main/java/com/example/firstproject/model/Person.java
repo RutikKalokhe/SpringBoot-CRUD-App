@@ -1,26 +1,37 @@
 package com.example.firstproject.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import java.util.UUID;
 
+@Entity
+@Table(name = "persons")
 public class Person {
-    private final UUID id;
-    @NotBlank
-    private final String name;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	@NotBlank
+	private String name;
+	
+	
 
-    public Person(@JsonProperty("id") UUID id,
-                  @JsonProperty("name") String name){
-        this.id = id;
-        this.name = name;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public UUID getId() {
-        return id;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setName(String name) {
+		this.name = name;
+
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }

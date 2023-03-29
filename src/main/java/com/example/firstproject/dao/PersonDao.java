@@ -1,22 +1,24 @@
 package com.example.firstproject.dao;
 
-import com.example.firstproject.model.Person;
-
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
-public interface PersonDao {
-    int insertPerson(UUID id, Person person);
-    default int insertPerson(Person person){
-        UUID id = UUID.randomUUID();
-        return insertPerson(id, person);
-    }
+import org.springframework.data.jpa.repository.JpaRepository;
 
-    List<Person> selectAllPerson();
+import com.example.firstproject.model.Person;
 
+public interface PersonDao extends JpaRepository<Person, Integer> {
+	// private static List<Person> DB = new ArrayList<>();
 
-    Optional<Person> selectPersonById(UUID id);
-    int deletePersonById(UUID id);
-    int updatePersonById(UUID id, Person person);
+	// get all persons
+	List<Person> findAll();
+
+	// get person data by its id
+	Optional<Person> findById(int id);
+
+	// update a person by id
+//	@Modifying
+//	@Query("update Person p set p.name=:name where p.id = :id")
+//	void updatePersonById(@Param("id") int id, @Param("name") String name);
+
 }
