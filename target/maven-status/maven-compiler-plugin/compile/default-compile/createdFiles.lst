@@ -1,6 +1,0 @@
-com\example\firstproject\model\Person.class
-com\example\firstproject\api\PersonController.class
-com\example\firstproject\FirstProjectApplication.class
-com\example\firstproject\dao\PersonDao.class
-com\example\firstproject\service\PersonService.class
-com\example\firstproject\security\SpringSecurityConfig.class
