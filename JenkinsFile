@@ -1,11 +1,25 @@
-node {
-  stage('SCM') {
-    checkout scm
-  }
-  stage('SonarQube Analysis') {
-    def mvn = tool 'Default Maven';
-    withSonarQubeEnv() {
-      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=springboot-analysis -Dsonar.projectName='springboot-analysis'"
-    }
-  }
+pipeline{
+   agent any
+//  environment {
+//  PATH = "$PATH:/root/.dotnet/tools"
+//  }
+ stages{
+
+
+ stage('SonarQube analysis') {
+// def scannerHome = tool 'SonarScanner 4.0';
+ steps{
+
+ // If you have configured more than one global server connection, you can specify its name
+// sh "${scannerHome}/bin/sonar-scanner"
+ sh """mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=springboot-crudapp-analysis \
+  -Dsonar.projectName='springboot-crudapp-analysis' \
+  -Dsonar.host.url=http://34.148.53.129:9000 \
+  -Dsonar.token=sqp_677dab904011912cdf2b2beb7bc4572b47da9a29"""
+
+ }
+ }
+
+ }
 }
