@@ -12,12 +12,12 @@ pipeline{
 
  // If you have configured more than one global server connection, you can specify its name
 // sh "${scannerHome}/bin/sonar-scanner"
- sh """mvn clean verify sonar:sonar \
-  -Dsonar.projectKey=springboot-crudapp-analysis \
-  -Dsonar.projectName='springboot-crudapp-analysis' \
-  -Dsonar.host.url=http://34.148.53.129:9000 \
-  -Dsonar.token=sqp_677dab904011912cdf2b2beb7bc4572b47da9a29"""
 
+sh """mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=springboot-analysis \
+  -Dsonar.projectName='springboot-analysis' \
+  -Dsonar.host.url=http://34.148.53.129:9000 \
+  -Dsonar.token=sqp_4fc81bc44595470c19b3530d211de94fa09f5b0a"""
  }
  }
 
